@@ -2,10 +2,12 @@
 
 class Controller
 {
-    public function view($ruta, $datos = [])
+    public function view($vista, $datos = [])
     {
         extract($datos);
 
-        require_once "../app/views/$ruta.php";
+        $contenido = "../app/views/" . $vista . ".php";
+
+        require_once "../app/views/layouts/master.php";
     }
 }

@@ -9,10 +9,4 @@ require_once '../app/core/Router.php';
 
 $router = new Router();
 
-$url = $router->cargarRuta();
-
-echo "<pre>";
-
-print_r($url);
-
-echo "</pre>";
+$router->cargarRuta();
