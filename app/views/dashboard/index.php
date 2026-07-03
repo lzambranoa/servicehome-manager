@@ -1,11 +1,17 @@
+
 <div class="container-fluid">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
 
         <div>
             <h2 class="fw-bold mb-0">
                 Dashboard
             </h2>
+            <p class="text-muted">
+
+            Bienvenido al sistema de gestión de servicios técnicos.
+
+            </p>
 
             <small class="text-muted">
                 Resumen general de ServiceHome Manager
@@ -29,7 +35,7 @@
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
 
                         <div>
 
@@ -49,8 +55,7 @@
 
                         <div class="align-self-center">
 
-                            <i class="bi bi-person-workspace text-primary"
-                               style="font-size:48px;"></i>
+                            <i class="bi bi-person-workspace text-primary fs-1"></i>
 
                         </div>
 
@@ -68,7 +73,7 @@
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
 
                         <div>
 
@@ -94,8 +99,7 @@
 
                         <div class="align-self-center">
 
-                            <i class="bi bi-tools text-primary"
-                               style="font-size:48px;"></i>
+                            <i class="bi bi-tools text-primary fs-1"></i>
 
                         </div>
 
@@ -113,7 +117,7 @@
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
 
                         <div>
 
@@ -139,8 +143,7 @@
 
                         <div class="align-self-center">
 
-                            <i class="bi bi-hourglass-split text-warning"
-                               style="font-size:48px;"></i>
+                            <i class="bi bi-hourglass-split text-warning fs-1"></i>
 
                         </div>
 
@@ -158,7 +161,7 @@
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
 
                         <div>
 
@@ -184,8 +187,7 @@
 
                         <div class="align-self-center">
 
-                            <i class="bi bi-check-circle-fill text-success"
-                               style="font-size:48px;"></i>
+                            <i class="bi bi-check-circle-fill text-success fs-1"></i>
 
                         </div>
 
@@ -215,7 +217,8 @@
 
         <div class="card-body">
 
-            <table class="table table-hover align-middle">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle table-sm">
 
                 <thead>
 
@@ -236,92 +239,106 @@
                 </thead>
 
                 <tbody>
+                    <?php if (!empty($ultimosServicios)): ?>
+                        <?php foreach ($ultimosServicios as $servicio): ?>
 
-                <?php foreach($ultimosServicios as $servicio): ?>
+                            <tr>
 
-                    <tr>
+                                <td>
 
-                        <td>
+                                    <?= htmlspecialchars($servicio["cliente"]) ?>
 
-                            <?= htmlspecialchars($servicio["cliente"]) ?>
+                                </td>
 
-                        </td>
+                                <td>
 
-                        <td>
+                                    <?= htmlspecialchars($servicio["tipo_servicio"]) ?>
 
-                            <?= htmlspecialchars($servicio["tipo_servicio"]) ?>
+                                </td>
 
-                        </td>
+                                <td>
 
-                        <td>
+                                    <?= $servicio["tecnico"] ?: "Sin asignar" ?>
 
-                            <?= $servicio["tecnico"] ?: "Sin asignar" ?>
+                                </td>
 
-                        </td>
+                                <td>
 
-                        <td>
+                                    <?php
 
-                            <?php
+                                    $badge = "secondary";
 
-                            $badge="secondary";
+                                    switch ($servicio["estado"]) {
 
-                            switch($servicio["estado"]){
+                                        case "Pendiente":
 
-                                case "Pendiente":
+                                            $badge = "warning";
 
-                                    $badge="warning";
+                                            break;
 
-                                    break;
+                                        case "Asignado":
 
-                                case "Asignado":
+                                            $badge = "primary";
 
-                                    $badge="primary";
+                                            break;
 
-                                    break;
+                                        case "En Proceso":
 
-                                case "En Proceso":
+                                            $badge = "info";
 
-                                    $badge="info";
+                                            break;
 
-                                    break;
+                                        case "Finalizado":
 
-                                case "Finalizado":
+                                            $badge = "success";
 
-                                    $badge="success";
+                                            break;
 
-                                    break;
+                                        case "Cancelado":
 
-                                case "Cancelado":
+                                            $badge = "danger";
 
-                                    $badge="danger";
+                                            break;
 
-                                    break;
+                                    }
 
-                            }
+                                    ?>
 
-                            ?>
+                                    <span class="badge bg-<?= $badge ?>">
 
-                            <span class="badge bg-<?= $badge ?>">
+                                        <?= $servicio["estado"] ?>
 
-                                <?= $servicio["estado"] ?>
+                                    </span>
 
-                            </span>
+                                </td>
 
-                        </td>
+                                <td>
 
-                        <td>
+                                    <?= date("d/m/Y", strtotime($servicio["fecha_programada"])) ?>
 
-                            <?= date("d/m/Y",strtotime($servicio["fecha_programada"])) ?>
+                                </td>
 
-                        </td>
+                            </tr>
 
-                    </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
 
-                <?php endforeach; ?>
+                        <tr>
+
+                            <td colspan="5" class="text-center text-muted">
+
+                                No existen servicios registrados.
+
+                            </td>
+
+                        </tr>
+
+                    <?php endif; ?>
 
                 </tbody>
 
             </table>
+            </div>
 
         </div>
 
@@ -331,7 +348,7 @@
 
     <div class="row mt-4">
 
-        <div class="col-md-6">
+        <div class="col-12 col-md-6">
 
             <div class="card shadow border-0">
 
@@ -349,9 +366,7 @@
 
                     <div class="d-grid gap-2">
 
-                        <a class="btn btn-outline-primary"
-
-                           href="<?= BASE_URL ?>tecnicos/create">
+                        <a class="btn btn-outline-primary" href="<?= BASE_URL ?>tecnicos/create">
 
                             <i class="bi bi-person-plus-fill"></i>
 
@@ -359,9 +374,7 @@
 
                         </a>
 
-                        <a class="btn btn-outline-success"
-
-                           href="<?= BASE_URL ?>servicios/create">
+                        <a class="btn btn-outline-success" href="<?= BASE_URL ?>servicios/create">
 
                             <i class="bi bi-tools"></i>
 
@@ -369,17 +382,13 @@
 
                         </a>
 
-                        <a class="btn btn-outline-secondary"
-
-                           href="<?= BASE_URL ?>tecnicos">
+                        <a class="btn btn-outline-secondary" href="<?= BASE_URL ?>tecnicos">
 
                             Ver Técnicos
 
                         </a>
 
-                        <a class="btn btn-outline-secondary"
-
-                           href="<?= BASE_URL ?>servicios">
+                        <a class="btn btn-outline-secondary" href="<?= BASE_URL ?>servicios">
 
                             Ver Servicios
 

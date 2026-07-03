@@ -1,0 +1,186 @@
+:root{
+
+    --primary:#0F172A;
+    --secondary:#2563EB;
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+    --background:#F8FAFC;
+
+}
+
+body{
+
+    background:var(--background);
+
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+
+}
+
+.navbar{
+
+    background:var(--primary)!important;
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:16px;
+
+    transition:.25s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.btn{
+
+    border-radius:10px;
+
+}
+
+.table{
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+.table tbody tr:hover{
+
+    background:#f5f8ff;
+
+}
+
+.form-control,
+
+.form-select{
+
+    border-radius:10px;
+
+}
+
+footer{
+
+    margin-top:40px;
+
+    padding:20px;
+
+    text-align:center;
+
+    color:#666;
+
+}
+
+/*=========================
+        NAVBAR
+==========================*/
+
+.navbar{
+
+    background:#0F172A !important;
+
+    padding:14px 20px;
+
+}
+
+.navbar-brand{
+
+    font-size:1.3rem;
+
+    font-weight:700;
+
+}
+
+.nav-link{
+
+    margin-left:10px;
+
+    border-radius:8px;
+
+    transition:.25s;
+
+}
+
+.nav-link:hover{
+
+    background:rgba(255,255,255,.12);
+
+}
+
+.container-fluid{
+
+    padding-top:20px;
+
+}
+
+/*=========================
+      DASHBOARD
+==========================*/
+
+.card{
+
+    border-radius:18px;
+
+}
+
+.card h2{
+
+    font-weight:700;
+
+}
+
+.card i{
+
+    opacity:.85;
+
+}
+
+/*=========================
+      BOTONES
+==========================*/
+
+.btn{
+
+    transition:.25s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/*=========================
+        TABLAS
+==========================*/
+
+.table thead{
+
+    background:#0F172A;
+
+    color:white;
+
+}
+
+.table tbody tr{
+
+    transition:.2s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#f3f7ff;
+
+}

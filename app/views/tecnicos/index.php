@@ -1,9 +1,12 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
 
-    <h2>Gestión de Técnicos</h2>
-    <?php Session::mostrarFlash(); ?>
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
 
-    <a href="<?= BASE_URL ?>tecnicos/create">
+    <div class="d-flex flex-column gap-2 w-100">
+        <h2 class="mb-0">Gestión de Técnicos</h2>
+        <?php Session::mostrarFlash(); ?>
+    </div>
+
+    <a href="<?= BASE_URL ?>tecnicos/create" class="d-inline-block">
 
        <button class="btn btn-primary">
 
@@ -17,9 +20,12 @@
     
 
 </div>
-<input class="form-control mb-3" placeholder="Buscar técnico...">
+<div class="mb-3" style="max-width: 420px;">
+    <input class="form-control" placeholder="Buscar técnico..." aria-label="Buscar técnico">
+</div>
 
-<table class="table table-bordered table-hover">
+<div class="table-responsive">
+<table class="table table-bordered table-hover table-striped align-middle">
 
     <thead class="table-dark">
 

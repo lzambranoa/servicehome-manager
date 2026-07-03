@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -24,9 +25,10 @@
 
         <div class="card-body">
 
-            <table class="table table-hover align-middle">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 w-100">
 
-                <thead>
+                    <thead>
 
                     <tr>
 
@@ -42,7 +44,7 @@
 
                         <th>Fecha</th>
 
-                        <th width="150">
+                        <th class="text-end" style="min-width: 150px;">
 
                             Acciones
 
@@ -138,23 +140,25 @@
 
                             </td>
 
-                            <td>
+<td class="text-end">
 
-                                <a href="<?= BASE_URL ?>servicios/edit/<?= $servicio['id_servicio']; ?>"
-                                    class="btn btn-warning btn-sm">
+                                    <div class="btn-group" role="group" aria-label="Acciones">
+                                        <a href="<?= BASE_URL ?>servicios/edit/<?= $servicio['id_servicio']; ?>"
+                                            class="btn btn-warning btn-sm">
 
-                                    <i class="bi bi-pencil-square"></i>
+                                            <i class="bi bi-pencil-square"></i>
 
-                                </a>
+                                        </a>
 
-                                <a href="<?= BASE_URL ?>servicios/delete/<?= $servicio['id_servicio']; ?>"
-                                    class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este servicio?')">
+                                        <a href="<?= BASE_URL ?>servicios/delete/<?= $servicio['id_servicio']; ?>"
+                                            class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este servicio?')">
 
-                                    <i class="bi bi-trash"></i>
+                                            <i class="bi bi-trash"></i>
 
-                                </a>
+                                        </a>
+                                    </div>
 
-                            </td>
+                                </td>
 
                         </tr>
 
@@ -163,7 +167,7 @@
                 </tbody>
 
             </table>
-
+            </div>
         </div>
 
     </div>
