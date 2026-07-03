@@ -30,6 +30,8 @@
 
             <a class="nav-link" href="<?= BASE_URL ?>servicios">
 
+                <i class="bi bi-tools"></i>
+
                 Servicios
 
             </a>

@@ -1,30 +1,60 @@
 <div class="container-fluid">
 
-    <h2 class="mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-        Dashboard
+        <div>
+            <h2 class="fw-bold mb-0">
+                Dashboard
+            </h2>
 
-    </h2>
+            <small class="text-muted">
+                Resumen general de ServiceHome Manager
+            </small>
+        </div>
 
-    <div class="row">
+        <a href="<?= BASE_URL ?>servicios/create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i>
+            Nuevo Servicio
+        </a>
 
-        <div class="col-md-3">
+    </div>
 
-            <div class="card shadow-sm">
+    <!-- Tarjetas -->
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card shadow border-0 h-100">
 
                 <div class="card-body">
 
-                    <h6 class="text-muted">
+                    <div class="d-flex justify-content-between">
 
-                        Técnicos
+                        <div>
 
-                    </h6>
+                            <small class="text-muted">
+                                Técnicos
+                            </small>
 
-                    <h2>
+                            <h2 class="fw-bold mt-2">
+                                <?= $totalTecnicos ?>
+                            </h2>
 
-                        <?= $totalTecnicos ?>
+                            <small class="text-success">
+                                Registrados
+                            </small>
 
-                    </h2>
+                        </div>
+
+                        <div class="align-self-center">
+
+                            <i class="bi bi-person-workspace text-primary"
+                               style="font-size:48px;"></i>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -32,23 +62,44 @@
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="card shadow border-0 h-100">
 
                 <div class="card-body">
 
-                    <h6 class="text-muted">
+                    <div class="d-flex justify-content-between">
 
-                        Servicios
+                        <div>
 
-                    </h6>
+                            <small class="text-muted">
 
-                    <h2>
+                                Servicios
 
-                        <?= $totalServicios ?>
+                            </small>
 
-                    </h2>
+                            <h2 class="fw-bold mt-2">
+
+                                <?= $totalServicios ?>
+
+                            </h2>
+
+                            <small class="text-primary">
+
+                                Registrados
+
+                            </small>
+
+                        </div>
+
+                        <div class="align-self-center">
+
+                            <i class="bi bi-tools text-primary"
+                               style="font-size:48px;"></i>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -56,23 +107,44 @@
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="card shadow border-0 h-100">
 
                 <div class="card-body">
 
-                    <h6 class="text-muted">
+                    <div class="d-flex justify-content-between">
 
-                        Pendientes
+                        <div>
 
-                    </h6>
+                            <small class="text-muted">
 
-                    <h2>
+                                Pendientes
 
-                        <?= $pendientes ?>
+                            </small>
 
-                    </h2>
+                            <h2 class="fw-bold mt-2">
+
+                                <?= $pendientes ?>
+
+                            </h2>
+
+                            <small class="text-warning">
+
+                                Por atender
+
+                            </small>
+
+                        </div>
+
+                        <div class="align-self-center">
+
+                            <i class="bi bi-hourglass-split text-warning"
+                               style="font-size:48px;"></i>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -80,23 +152,240 @@
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="card shadow border-0 h-100">
 
                 <div class="card-body">
 
-                    <h6 class="text-muted">
+                    <div class="d-flex justify-content-between">
 
-                        Finalizados
+                        <div>
 
-                    </h6>
+                            <small class="text-muted">
 
-                    <h2>
+                                Finalizados
 
-                        <?= $finalizados ?>
+                            </small>
 
-                    </h2>
+                            <h2 class="fw-bold mt-2">
+
+                                <?= $finalizados ?>
+
+                            </h2>
+
+                            <small class="text-success">
+
+                                Completados
+
+                            </small>
+
+                        </div>
+
+                        <div class="align-self-center">
+
+                            <i class="bi bi-check-circle-fill text-success"
+                               style="font-size:48px;"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Últimos servicios -->
+
+    <div class="card shadow border-0 mt-5">
+
+        <div class="card-header bg-white">
+
+            <h5 class="mb-0">
+
+                Últimos Servicios
+
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Cliente</th>
+
+                        <th>Tipo</th>
+
+                        <th>Técnico</th>
+
+                        <th>Estado</th>
+
+                        <th>Fecha</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                <?php foreach($ultimosServicios as $servicio): ?>
+
+                    <tr>
+
+                        <td>
+
+                            <?= htmlspecialchars($servicio["cliente"]) ?>
+
+                        </td>
+
+                        <td>
+
+                            <?= htmlspecialchars($servicio["tipo_servicio"]) ?>
+
+                        </td>
+
+                        <td>
+
+                            <?= $servicio["tecnico"] ?: "Sin asignar" ?>
+
+                        </td>
+
+                        <td>
+
+                            <?php
+
+                            $badge="secondary";
+
+                            switch($servicio["estado"]){
+
+                                case "Pendiente":
+
+                                    $badge="warning";
+
+                                    break;
+
+                                case "Asignado":
+
+                                    $badge="primary";
+
+                                    break;
+
+                                case "En Proceso":
+
+                                    $badge="info";
+
+                                    break;
+
+                                case "Finalizado":
+
+                                    $badge="success";
+
+                                    break;
+
+                                case "Cancelado":
+
+                                    $badge="danger";
+
+                                    break;
+
+                            }
+
+                            ?>
+
+                            <span class="badge bg-<?= $badge ?>">
+
+                                <?= $servicio["estado"] ?>
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <?= date("d/m/Y",strtotime($servicio["fecha_programada"])) ?>
+
+                        </td>
+
+                    </tr>
+
+                <?php endforeach; ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- Acciones rápidas -->
+
+    <div class="row mt-4">
+
+        <div class="col-md-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-header bg-white">
+
+                    <h5>
+
+                        Acciones rápidas
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="d-grid gap-2">
+
+                        <a class="btn btn-outline-primary"
+
+                           href="<?= BASE_URL ?>tecnicos/create">
+
+                            <i class="bi bi-person-plus-fill"></i>
+
+                            Nuevo Técnico
+
+                        </a>
+
+                        <a class="btn btn-outline-success"
+
+                           href="<?= BASE_URL ?>servicios/create">
+
+                            <i class="bi bi-tools"></i>
+
+                            Nuevo Servicio
+
+                        </a>
+
+                        <a class="btn btn-outline-secondary"
+
+                           href="<?= BASE_URL ?>tecnicos">
+
+                            Ver Técnicos
+
+                        </a>
+
+                        <a class="btn btn-outline-secondary"
+
+                           href="<?= BASE_URL ?>servicios">
+
+                            Ver Servicios
+
+                        </a>
+
+                    </div>
 
                 </div>
 

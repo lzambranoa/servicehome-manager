@@ -1,29 +1,37 @@
 <?php
 
+require_once "../app/models/Tecnico.php";
+require_once "../app/models/Servicio.php";
+
 class DashboardController extends Controller
 {
+    private $tecnicoModel;
+    private $servicioModel;
+
+    public function __construct()
+    {
+        $this->tecnicoModel = new Tecnico();
+        $this->servicioModel = new Servicio();
+    }
 
     public function index()
-{
-    require_once "../app/models/Tecnico.php";
+    {
+        $datos = [
 
-    $tecnico = new Tecnico();
+            "titulo" => "Dashboard",
 
-    $datos = [
+            "totalTecnicos" => $this->tecnicoModel->totalTecnicos(),
 
-        "titulo" => "Dashboard",
+            "totalServicios" => $this->servicioModel->totalServicios(),
 
-        "totalTecnicos" => $tecnico->totalTecnicos(),
+            "pendientes" => $this->servicioModel->totalPendientes(),
 
-        "totalServicios" => 0,
+            "finalizados" => $this->servicioModel->totalFinalizados(),
 
-        "pendientes" => 0,
+            "ultimosServicios" => $this->servicioModel->obtenerUltimos()
 
-        "finalizados" => 0
+        ];
 
-    ];
-
-    $this->view("dashboard/index", $datos);
-}
-
+        $this->view("dashboard/index",$datos);
+    }
 }
