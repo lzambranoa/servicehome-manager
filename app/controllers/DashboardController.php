@@ -4,15 +4,26 @@ class DashboardController extends Controller
 {
 
     public function index()
-    {
-        $datos = [
+{
+    require_once "../app/models/Tecnico.php";
 
-            "titulo" => "Dashboard"
+    $tecnico = new Tecnico();
 
-        ];
+    $datos = [
 
-        $this->view("dashboard/index", $datos);
+        "titulo" => "Dashboard",
 
-    }
+        "totalTecnicos" => $tecnico->totalTecnicos(),
+
+        "totalServicios" => 0,
+
+        "pendientes" => 0,
+
+        "finalizados" => 0
+
+    ];
+
+    $this->view("dashboard/index", $datos);
+}
 
 }

@@ -34,7 +34,15 @@ class Router
 
         }
 
-        $controller->$metodo();
+        if (isset($url[2])) {
+
+        $controller->$metodo($url[2]);
+
+        } else {
+
+            $controller->$metodo();
+
+        }
 
     } else {
 
